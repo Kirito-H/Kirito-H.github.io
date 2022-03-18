@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-hk">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favico_32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favico_16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kirito-h.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="个人作品&#x2F;案例http:&#x2F;&#x2F;kirito.xyz&#x2F;Portfolio (展示页首页还在完善中)也可用手机扫描二维码查看：  联系方式Email：&amp;#x6b;&amp;#x69;&amp;#x72;&amp;#105;&amp;#116;&amp;#x6f;&amp;#x5f;&amp;#x68;&amp;#x75;&amp;#97;&amp;#110;&amp;#x67;&amp;#x40;&amp;#49;&amp;#x36;&amp;#51;&amp;#x2e;&amp;#99;&amp;#x6f;&amp;#109;  个人信息">
+<meta property="og:type" content="website">
+<meta property="og:title" content="梟羊小棧">
+<meta property="og:url" content="https://kirito-h.github.io/about/index.html">
+<meta property="og:site_name" content="梟羊小棧">
+<meta property="og:description" content="个人作品&#x2F;案例http:&#x2F;&#x2F;kirito.xyz&#x2F;Portfolio (展示页首页还在完善中)也可用手机扫描二维码查看：  联系方式Email：&amp;#x6b;&amp;#x69;&amp;#x72;&amp;#105;&amp;#116;&amp;#x6f;&amp;#x5f;&amp;#x68;&amp;#x75;&amp;#97;&amp;#110;&amp;#x67;&amp;#x40;&amp;#49;&amp;#x36;&amp;#51;&amp;#x2e;&amp;#99;&amp;#x6f;&amp;#109;  个人信息">
+<meta property="og:locale" content="zh_HK">
+<meta property="og:image" content="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQQAAAEECAIAAABBat1dAAAFlUlEQVR4nO3dwW7cNhRAUbvo//9yurnISkLFiGQ57jnLwNDIE18QeCKo71+/fn0BX19//dc3AKcQA0QMEDFAxAARA+Tvy3/9/v7efB/PXc6Ch274E6fJl7/gul/k/ff5cX9CX1YG+E0MEDFAxAARA0QMkOvR6qX9E8n347l1U79FV777koe+/Oe3MeXjhmz+Kxr6H7EyQMQAEQNEDBAxQMQAEQNk4DnDnXXD9fc+bivy3ccNfUXvf5GTd4xfmnJvVgaIGCBigIgBIgaIGCATRqsnuJusbR4RXlp3bx83OD6clQEiBogYIGKAiAEiBogYID/kOcOQoW3S758SDH3cIYP/97/IJ7IyQMQAEQNEDBAxQMQAmTBaPWGyNmUi+f4i63aMnzCH/TFHc9+xMkDEABEDRAwQMUDEABEDZOA5wyG7i4es21O9+aTr9z/83pQt3Cf/FVkZIGKAiAEiBogYIGKAXI9WD9lSe4J148vNu7J/zH7vdawMEDFAxAARA0QMEDFAJpyOsWjIeHfldTO7oY874biKQ15wuO4PYPPHWRkgYoCIASIGiBggYoCIAXL9nGHdAHtoorzoBIqhjzvEonvbfxjH819k/4shrQwQMUDEABEDRAwQMUAmnI7xfqP1yZvAD9kmvci68eUh2/KHrmxlgIgBIgaIGCBigIgBIgbI96IR75Qt3M+vvPlVf3efuO6xxrrB//Pb2LzFfcr/necM8CfEABEDRAwQMUDEALkerR7yMrznt7F/w/DJG7PfWzeHff7D+3eMWxkgYoCIASIGiBggYoCIATKwhfvkE63Xbfc95KiYEw7v+fF70a0MEDFAxAARA0QMEDFABl5wuG6yNnSRyyt84q7sE46rmDIAHfofWfQlT/l7szJAxAARA0QMEDFAxACZcDrGySPC9zafEzHFos2zm3et7j/xxMoAEQNEDBAxQMQAEQNEDJBVp2Pc2TwCXzfAPuEEivc+8fnM8yvccToG/AsxQMQAEQNEDBAxQK5Px7i0f9S16OMOufKQRWPfddvLpxyl8dyUX8TKABEDRAwQMUDEABEDRAyQgecMd4ZGuSecdD3lxObn9j+peH8cy+bvbd0RO07hhj8hBogYIGKAiAEiBsiE0eqlk0952Hxvd4Zu4+Sx78edrH7HygARA0QMEDFAxAARA0QMkFWncE+Zi28eYJ+w33uzdSerr7uNded7WxkgYoCIASIGiBggYoBcb+Fed1rB+yHaIfd2wth36CLrdox/3MfdsTJAxAARA0QMEDFAxAC53rW66HV6tzfxgW9DfP+9bbbusIlDfsH3rAwQMUDEABEDRAwQMUDEAJlwCvfJjxTWWTS2n3Jyx3Prnh3dWfS9TflFrAwQMUDEABEDRAwQMUAmjFaHpldDI8LnV96/P/n9vV3+8JRjPhYdJr35jYP7B+tWBogYIGKAiAEiBogYIGKAXD9nWHeE8qIrrPOJ26QXfdy6dz2ecP75l5UBfhMDRAwQMUDEABEDZOAFh4d4v/N53XEem3eSr/u491deN4dd93FWBogYIGKAiAEiBogYIGKADBwVs3+j9ebHHSfsqd78wye/AnTKvTmFG/6EGCBigIgBIgaIGCCrTuEecsgYbvMnrhvaPt/vPWU3++Z3Fg4ZujcrA0QMEDFAxAARA0QMkAmj1ZNtHtoe8vLF5z885VCJRV/y0L05HQNmEgNEDBAxQMQAEQNEDJAf/pxhaN/yoqcE6w79XneRdSd3PD9E/f1lR1kZIGKAiAEiBogYIGKAfC86SWGKza8nfH/lE64wZP8JFO9vY90fp5UBIgaIGCBigIgBIgaIGCADzxkOsfmNg+tG4IccIfPclBs+4fCeO1YGiBggYoCIASIGiBgg16NV+B+yMkDEABEDRAwQMUDEABED5B9XL+ErorsYTwAAAABJRU5ErkJggg==">
+<meta property="article:published_time" content="2018-06-17T03:31:14.000Z">
+<meta property="article:modified_time" content="2022-03-17T10:33:29.134Z">
+<meta property="article:author" content="梟羊 · Kirito">
+<meta property="article:tag" content="个人信息">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQQAAAEECAIAAABBat1dAAAFlUlEQVR4nO3dwW7cNhRAUbvo//9yurnISkLFiGQ57jnLwNDIE18QeCKo71+/fn0BX19//dc3AKcQA0QMEDFAxAARA+Tvy3/9/v7efB/PXc6Ch274E6fJl7/gul/k/ff5cX9CX1YG+E0MEDFAxAARA0QMkOvR6qX9E8n347l1U79FV777koe+/Oe3MeXjhmz+Kxr6H7EyQMQAEQNEDBAxQMQAEQNk4DnDnXXD9fc+bivy3ccNfUXvf5GTd4xfmnJvVgaIGCBigIgBIgaIGCATRqsnuJusbR4RXlp3bx83OD6clQEiBogYIGKAiAEiBogYID/kOcOQoW3S758SDH3cIYP/97/IJ7IyQMQAEQNEDBAxQMQAmTBaPWGyNmUi+f4i63aMnzCH/TFHc9+xMkDEABEDRAwQMUDEABEDZOA5wyG7i4es21O9+aTr9z/83pQt3Cf/FVkZIGKAiAEiBogYIGKAXI9WD9lSe4J148vNu7J/zH7vdawMEDFAxAARA0QMEDFAJpyOsWjIeHfldTO7oY874biKQ15wuO4PYPPHWRkgYoCIASIGiBggYoCIAXL9nGHdAHtoorzoBIqhjzvEonvbfxjH819k/4shrQwQMUDEABEDRAwQMUAmnI7xfqP1yZvAD9kmvci68eUh2/KHrmxlgIgBIgaIGCBigIgBIgbI96IR75Qt3M+vvPlVf3efuO6xxrrB//Pb2LzFfcr/necM8CfEABEDRAwQMUDEALkerR7yMrznt7F/w/DJG7PfWzeHff7D+3eMWxkgYoCIASIGiBggYoCIATKwhfvkE63Xbfc95KiYEw7v+fF70a0MEDFAxAARA0QMEDFABl5wuG6yNnSRyyt84q7sE46rmDIAHfofWfQlT/l7szJAxAARA0QMEDFAxACZcDrGySPC9zafEzHFos2zm3et7j/xxMoAEQNEDBAxQMQAEQNEDJBVp2Pc2TwCXzfAPuEEivc+8fnM8yvccToG/AsxQMQAEQNEDBAxQK5Px7i0f9S16OMOufKQRWPfddvLpxyl8dyUX8TKABEDRAwQMUDEABEDRAyQgecMd4ZGuSecdD3lxObn9j+peH8cy+bvbd0RO07hhj8hBogYIGKAiAEiBsiE0eqlk0952Hxvd4Zu4+Sx78edrH7HygARA0QMEDFAxAARA0QMkFWncE+Zi28eYJ+w33uzdSerr7uNded7WxkgYoCIASIGiBggYoBcb+Fed1rB+yHaIfd2wth36CLrdox/3MfdsTJAxAARA0QMEDFAxAC53rW66HV6tzfxgW9DfP+9bbbusIlDfsH3rAwQMUDEABEDRAwQMUDEAJlwCvfJjxTWWTS2n3Jyx3Prnh3dWfS9TflFrAwQMUDEABEDRAwQMUAmjFaHpldDI8LnV96/P/n9vV3+8JRjPhYdJr35jYP7B+tWBogYIGKAiAEiBogYIGKAXD9nWHeE8qIrrPOJ26QXfdy6dz2ecP75l5UBfhMDRAwQMUDEABEDZOAFh4d4v/N53XEem3eSr/u491deN4dd93FWBogYIGKAiAEiBogYIGKADBwVs3+j9ebHHSfsqd78wye/AnTKvTmFG/6EGCBigIgBIgaIGCCrTuEecsgYbvMnrhvaPt/vPWU3++Z3Fg4ZujcrA0QMEDFAxAARA0QMkAmj1ZNtHtoe8vLF5z885VCJRV/y0L05HQNmEgNEDBAxQMQAEQNEDJAf/pxhaN/yoqcE6w79XneRdSd3PD9E/f1lR1kZIGKAiAEiBogYIGKAfC86SWGKza8nfH/lE64wZP8JFO9vY90fp5UBIgaIGCBigIgBIgaIGCADzxkOsfmNg+tG4IccIfPclBs+4fCeO1YGiBggYoCIASIGiBgg16NV+B+yMkDEABEDRAwQMUDEABED5B9XL+ErorsYTwAAAABJRU5ErkJggg==">
+
+<link rel="canonical" href="https://kirito-h.github.io/about/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-hk'
+  };
+</script>
+
+  <title> | 梟羊小棧
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">梟羊小棧</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">個人博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-hk">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <h2 id="个人作品-x2F-案例"><a href="#个人作品-x2F-案例" class="headerlink" title="个人作品&#x2F;案例"></a>个人作品&#x2F;案例</h2><p><a target="_blank" rel="noopener" href="http://kirito.xyz/Portfolio" title="枭羊个人作品">http://kirito.xyz/Portfolio</a> (<code>展示页首页还在完善中</code>)<br>也可用手机扫描二维码查看：<br><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQQAAAEECAIAAABBat1dAAAFlUlEQVR4nO3dwW7cNhRAUbvo//9yurnISkLFiGQ57jnLwNDIE18QeCKo71+/fn0BX19//dc3AKcQA0QMEDFAxAARA+Tvy3/9/v7efB/PXc6Ch274E6fJl7/gul/k/ff5cX9CX1YG+E0MEDFAxAARA0QMkOvR6qX9E8n347l1U79FV777koe+/Oe3MeXjhmz+Kxr6H7EyQMQAEQNEDBAxQMQAEQNk4DnDnXXD9fc+bivy3ccNfUXvf5GTd4xfmnJvVgaIGCBigIgBIgaIGCATRqsnuJusbR4RXlp3bx83OD6clQEiBogYIGKAiAEiBogYID/kOcOQoW3S758SDH3cIYP/97/IJ7IyQMQAEQNEDBAxQMQAmTBaPWGyNmUi+f4i63aMnzCH/TFHc9+xMkDEABEDRAwQMUDEABEDZOA5wyG7i4es21O9+aTr9z/83pQt3Cf/FVkZIGKAiAEiBogYIGKAXI9WD9lSe4J148vNu7J/zH7vdawMEDFAxAARA0QMEDFAJpyOsWjIeHfldTO7oY874biKQ15wuO4PYPPHWRkgYoCIASIGiBggYoCIAXL9nGHdAHtoorzoBIqhjzvEonvbfxjH819k/4shrQwQMUDEABEDRAwQMUAmnI7xfqP1yZvAD9kmvci68eUh2/KHrmxlgIgBIgaIGCBigIgBIgbI96IR75Qt3M+vvPlVf3efuO6xxrrB//Pb2LzFfcr/necM8CfEABEDRAwQMUDEALkerR7yMrznt7F/w/DJG7PfWzeHff7D+3eMWxkgYoCIASIGiBggYoCIATKwhfvkE63Xbfc95KiYEw7v+fF70a0MEDFAxAARA0QMEDFABl5wuG6yNnSRyyt84q7sE46rmDIAHfofWfQlT/l7szJAxAARA0QMEDFAxACZcDrGySPC9zafEzHFos2zm3et7j/xxMoAEQNEDBAxQMQAEQNEDJBVp2Pc2TwCXzfAPuEEivc+8fnM8yvccToG/AsxQMQAEQNEDBAxQK5Px7i0f9S16OMOufKQRWPfddvLpxyl8dyUX8TKABEDRAwQMUDEABEDRAyQgecMd4ZGuSecdD3lxObn9j+peH8cy+bvbd0RO07hhj8hBogYIGKAiAEiBsiE0eqlk0952Hxvd4Zu4+Sx78edrH7HygARA0QMEDFAxAARA0QMkFWncE+Zi28eYJ+w33uzdSerr7uNded7WxkgYoCIASIGiBggYoBcb+Fed1rB+yHaIfd2wth36CLrdox/3MfdsTJAxAARA0QMEDFAxAC53rW66HV6tzfxgW9DfP+9bbbusIlDfsH3rAwQMUDEABEDRAwQMUDEAJlwCvfJjxTWWTS2n3Jyx3Prnh3dWfS9TflFrAwQMUDEABEDRAwQMUAmjFaHpldDI8LnV96/P/n9vV3+8JRjPhYdJr35jYP7B+tWBogYIGKAiAEiBogYIGKAXD9nWHeE8qIrrPOJ26QXfdy6dz2ecP75l5UBfhMDRAwQMUDEABEDZOAFh4d4v/N53XEem3eSr/u491deN4dd93FWBogYIGKAiAEiBogYIGKADBwVs3+j9ebHHSfsqd78wye/AnTKvTmFG/6EGCBigIgBIgaIGCCrTuEecsgYbvMnrhvaPt/vPWU3++Z3Fg4ZujcrA0QMEDFAxAARA0QMkAmj1ZNtHtoe8vLF5z885VCJRV/y0L05HQNmEgNEDBAxQMQAEQNEDJAf/pxhaN/yoqcE6w79XneRdSd3PD9E/f1lR1kZIGKAiAEiBogYIGKAfC86SWGKza8nfH/lE64wZP8JFO9vY90fp5UBIgaIGCBigIgBIgaIGCADzxkOsfmNg+tG4IccIfPclBs+4fCeO1YGiBggYoCIASIGiBgg16NV+B+yMkDEABEDRAwQMUDEABED5B9XL+ErorsYTwAAAABJRU5ErkJggg==" alt="个人案例"></p>
+<hr>
+<h2 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h2><p>Email：<a href="mailto:&#x6b;&#x69;&#x72;&#105;&#116;&#x6f;&#x5f;&#x68;&#x75;&#97;&#110;&#x67;&#x40;&#49;&#x36;&#51;&#x2e;&#99;&#x6f;&#109;">&#x6b;&#x69;&#x72;&#105;&#116;&#x6f;&#x5f;&#x68;&#x75;&#97;&#110;&#x67;&#x40;&#49;&#x36;&#51;&#x2e;&#99;&#x6f;&#109;</a></p>
+<hr>
+<h2 id="个人信息"><a href="#个人信息" class="headerlink" title="个人信息"></a>个人信息</h2><ul>
+<li>枭羊 &#x2F; 男</li>
+<li>本科</li>
+<li>期望职位：Web前端开发工程师</li>
+<li>期望城市：广州、佛山</li>
+</ul>
+<hr>
+<h2 id="工作经历"><a href="#工作经历" class="headerlink" title="工作经历"></a>工作经历</h2><p>详情可查看本人在51job上的简历信息，谢谢。</p>
+<hr>
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AA%E4%BA%BA%E4%BD%9C%E5%93%81-x2F-%E6%A1%88%E4%BE%8B"><span class="nav-number">1.</span> <span class="nav-text">个人作品&#x2F;案例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%81%94%E7%B3%BB%E6%96%B9%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">联系方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF"><span class="nav-number">3.</span> <span class="nav-text">个人信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E7%BB%8F%E5%8E%86"><span class="nav-number">4.</span> <span class="nav-text">工作经历</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="梟羊 · Kirito"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">梟羊 · Kirito</p>
+  <div class="site-description" itemprop="description">找到活著的意義，便能生存</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">梟羊 · Kirito</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'YT1CaolpF8uSu0ubMhUSItYS-MdYXbMMI',
+      appKey     : '6wKOsvAvXofOtNpe3F3UAuFW',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : 'https://yt1caolp.api.lncldglobal.com'
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
