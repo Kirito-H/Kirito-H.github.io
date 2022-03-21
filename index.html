@@ -195,7 +195,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2018-06-20 18:55:04" itemprop="dateModified" datetime="2018-06-20T18:55:04+08:00">2018-06-20</time>
+                <time title="Modified: 2022-03-21 12:33:45" itemprop="dateModified" datetime="2022-03-21T12:33:45+08:00">2022-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -232,13 +232,99 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips:"></a>Tips:</h3><ul>
+          <h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h3><ul>
 <li>当你执行 git branch (branchname) 时，Git 如何知道最新提交的 SHA-1 值呢？ 答案是 HEAD 文件。</li>
 <li>HEAD 文件是一个符号引用（symbolic reference），指向目前所在的分支。 所谓符号引用，意味着它并不像普通引用那样包含一个 SHA-1 值——它是一个指向其他引用的指针。</li>
 </ul>
 <hr>
 <h3 id="Git常用命令"><a href="#Git常用命令" class="headerlink" title="Git常用命令"></a>Git常用命令</h3><p>一些常用的git命令，以备忘时之需。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">git init                                                  # 初始化本地git仓库（创建新仓库）</span><br><span class="line">git config --global user.name &quot;xxx&quot;                       # 配置用户名</span><br><span class="line">git config --global user.email &quot;xxx@xxx.com&quot;              # 配置邮件</span><br><span class="line">git config --global color.ui true                         # git status等命令自动着色</span><br><span class="line">git config --global color.status auto</span><br><span class="line">git config --global color.diff auto</span><br><span class="line">git config --global color.branch auto</span><br><span class="line">git config --global color.interactive auto</span><br><span class="line">git config --global --unset http.proxy                    # remove  proxy configuration on git</span><br><span class="line">git clone git+ssh://git@192.168.53.168/VT.git             # clone远程仓库</span><br><span class="line">git status                                                # 查看当前版本状态（是否修改）</span><br><span class="line">git add xyz                                               # 添加xyz文件至index</span><br><span class="line">git add .                                                 # 增加当前子目录下所有更改过的文件至index</span><br><span class="line">git commit -m &#x27;xxx&#x27;                                       # 提交</span><br><span class="line">git commit --amend -m &#x27;xxx&#x27;                               # 合并上一次提交（用于反复修改）</span><br><span class="line">git commit -am &#x27;xxx&#x27;                                      # 将add和commit合为一步</span><br><span class="line">git rm xxx                                                # 删除index中的文件</span><br><span class="line">git rm -r *                                               # 递归删除</span><br><span class="line">git log                                                   # 显示提交日志</span><br><span class="line">git log -1                                                # 显示1行日志 -n为n行</span><br><span class="line">git log -5</span><br><span class="line">git log --stat                                            # 显示提交日志及相关变动文件</span><br><span class="line">git log -p -m</span><br><span class="line">git show dfb02e6e4f2f7b573337763e5c0013802e392818         # 显示某个提交的详细内容</span><br><span class="line">git show dfb02                                            # 可只用commitid的前几位</span><br><span class="line">git show HEAD                                             # 显示HEAD提交日志</span><br><span class="line">git show HEAD^                                            # 显示HEAD的父（上一个版本）的提交日志 ^^为上两个版本 ^5为上5个版本</span><br><span class="line">git tag                                                   # 显示已存在的tag</span><br><span class="line">git tag -a v2.0 -m &#x27;xxx&#x27;                                  # 增加v2.0的tag</span><br><span class="line">git show v2.0                                             # 显示v2.0的日志及详细内容</span><br><span class="line">git log v2.0                                              # 显示v2.0的日志</span><br><span class="line">git diff                                                  # 显示所有未添加至index的变更</span><br><span class="line">git diff --cached                                         # 显示所有已添加index但还未commit的变更</span><br><span class="line">git diff HEAD^                                            # 比较与上一个版本的差异</span><br><span class="line">git diff HEAD -- ./lib                                    # 比较与HEAD版本lib目录的差异</span><br><span class="line">git diff origin/master..master                            # 比较远程分支master上有本地分支master上没有的</span><br><span class="line">git diff origin/master..master --stat                     # 只显示差异的文件，不显示具体内容</span><br><span class="line">git remote add origin git+ssh://git@192.168.53.168/VT.git # 增加远程定义（用于push/pull/fetch）</span><br><span class="line">git branch                                                # 显示本地分支</span><br><span class="line">git branch --contains 50089                               # 显示包含提交50089的分支</span><br><span class="line">git branch -a                                             # 显示所有分支</span><br><span class="line">git branch -r                                             # 显示所有原创分支</span><br><span class="line">git branch --merged                                       # 显示所有已合并到当前分支的分支</span><br><span class="line">git branch --no-merged                                    # 显示所有未合并到当前分支的分支</span><br><span class="line">git branch -m master master_copy                          # 本地分支改名</span><br><span class="line">git checkout -b master_copy                               # 从当前分支创建新分支master_copy并检出</span><br><span class="line">git checkout -b master master_copy                        # 上面的完整版</span><br><span class="line">git checkout features/performance                         # 检出已存在的features/performance分支</span><br><span class="line">git checkout --track hotfixes/BJVEP933                    # 检出远程分支hotfixes/BJVEP933并创建本地跟踪分支</span><br><span class="line">git checkout v2.0                                         # 检出版本v2.0</span><br><span class="line">git checkout -b devel origin/develop                      # 从远程分支develop创建新本地分支devel并检出</span><br><span class="line">git checkout -- README                                    # 检出head版本的README文件（可用于修改错误回退）</span><br><span class="line">git merge origin/master                                   # 合并远程master分支至当前分支</span><br><span class="line">git cherry-pick ff44785404a8e                             # 合并提交ff44785404a8e的修改</span><br><span class="line">git push origin master                                    # 将当前分支push到远程master分支</span><br><span class="line">git push origin :hotfixes/BJVEP933                        # 删除远程仓库的hotfixes/BJVEP933分支</span><br><span class="line">git push --tags                                           # 把所有tag推送到远程仓库</span><br><span class="line">git fetch                                                 # 获取所有远程分支（不更新本地分支，另需merge）</span><br><span class="line">git fetch --prune                                         # 获取所有原创分支并清除服务器上已删掉的分支</span><br><span class="line">git pull origin master                                    # 获取远程分支master并merge到当前分支</span><br><span class="line">git mv README README2                                     # 重命名文件README为README2</span><br><span class="line">git reset --hard HEAD                                     # 将当前版本重置为HEAD（通常用于merge失败回退）</span><br><span class="line">git rebase</span><br><span class="line">git branch -d hotfixes/BJVEP933                           # 删除分支hotfixes/BJVEP933（本分支修改已合并到其他分支）</span><br><span class="line">git branch -D hotfixes/BJVEP933                           # 强制删除分支hotfixes/BJVEP933</span><br><span class="line">git ls-files                                              # 列出git index包含的文件</span><br><span class="line">git show-branch                                           # 图示当前分支历史</span><br><span class="line">git show-branch --all                                     # 图示所有分支历史</span><br><span class="line">git whatchanged                                           # 显示提交历史对应的文件修改</span><br><span class="line">git revert dfb02e6e4f2f7b573337763e5c0013802e392818       # 撤销提交dfb02e6e4f2f7b573337763e5c0013802e392818</span><br><span class="line">git ls-tree HEAD                                          # 内部命令：显示某个git对象</span><br><span class="line">git rev-parse v2.0                                        # 内部命令：显示某个ref对于的SHA1 HASH</span><br><span class="line">git reflog                                                # 显示所有提交，包括孤立节点</span><br><span class="line">git show HEAD@&#123;5&#125;</span><br><span class="line">git show master@&#123;yesterday&#125;                               # 显示master分支昨天的状态</span><br><span class="line">git log --pretty=format:&#x27;%h %s&#x27; --graph                   # 图示提交日志</span><br><span class="line">git show HEAD~3</span><br><span class="line">git show -s --pretty=raw 2be7fcb476</span><br><span class="line">git stash                                                 # 暂存当前修改，将所有至为HEAD状态</span><br><span class="line">git stash list                                            # 查看所有暂存</span><br><span class="line">git stash show -p stash@&#123;0&#125;                               # 参考第一次暂存</span><br><span class="line">git stash apply stash@&#123;0&#125;                                 # 应用第一次暂存</span><br><span class="line">git grep &quot;delete from&quot;                                    # 文件中搜索文本“delete from”</span><br><span class="line">git grep -e &#x27;#define&#x27; --and -e SORT_DIRENT</span><br><span class="line">git gc</span><br><span class="line">git fsck</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">git init                                                  # 初始化本地git仓库（创建新仓库）
+git config --global user.name "xxx"                       # 配置用户名
+git config --global user.email "xxx@xxx.com"              # 配置邮件
+git config --global color.ui true                         # git status等命令自动着色
+git config --global color.status auto
+git config --global color.diff auto
+git config --global color.branch auto
+git config --global color.interactive auto
+git config --global --unset http.proxy                    # remove  proxy configuration on git
+git clone git+ssh://git@192.168.53.168/VT.git             # clone远程仓库
+git status                                                # 查看当前版本状态（是否修改）
+git add xyz                                               # 添加xyz文件至index
+git add .                                                 # 增加当前子目录下所有更改过的文件至index
+git commit -m 'xxx'                                       # 提交
+git commit --amend -m 'xxx'                               # 合并上一次提交（用于反复修改）
+git commit -am 'xxx'                                      # 将add和commit合为一步
+git rm xxx                                                # 删除index中的文件
+git rm -r *                                               # 递归删除
+git log                                                   # 显示提交日志
+git log -1                                                # 显示1行日志 -n为n行
+git log -5
+git log --stat                                            # 显示提交日志及相关变动文件
+git log -p -m
+git show dfb02e6e4f2f7b573337763e5c0013802e392818         # 显示某个提交的详细内容
+git show dfb02                                            # 可只用commitid的前几位
+git show HEAD                                             # 显示HEAD提交日志
+git show HEAD^                                            # 显示HEAD的父（上一个版本）的提交日志 ^^为上两个版本 ^5为上5个版本
+git tag                                                   # 显示已存在的tag
+git tag -a v2.0 -m 'xxx'                                  # 增加v2.0的tag
+git show v2.0                                             # 显示v2.0的日志及详细内容
+git log v2.0                                              # 显示v2.0的日志
+git diff                                                  # 显示所有未添加至index的变更
+git diff --cached                                         # 显示所有已添加index但还未commit的变更
+git diff HEAD^                                            # 比较与上一个版本的差异
+git diff HEAD -- ./lib                                    # 比较与HEAD版本lib目录的差异
+git diff origin/master..master                            # 比较远程分支master上有本地分支master上没有的
+git diff origin/master..master --stat                     # 只显示差异的文件，不显示具体内容
+git remote add origin git+ssh://git@192.168.53.168/VT.git # 增加远程定义（用于push/pull/fetch）
+git branch                                                # 显示本地分支
+git branch --contains 50089                               # 显示包含提交50089的分支
+git branch -a                                             # 显示所有分支
+git branch -r                                             # 显示所有原创分支
+git branch --merged                                       # 显示所有已合并到当前分支的分支
+git branch --no-merged                                    # 显示所有未合并到当前分支的分支
+git branch -m master master_copy                          # 本地分支改名
+git checkout -b master_copy                               # 从当前分支创建新分支master_copy并检出
+git checkout -b master master_copy                        # 上面的完整版
+git checkout features/performance                         # 检出已存在的features/performance分支
+git checkout --track hotfixes/BJVEP933                    # 检出远程分支hotfixes/BJVEP933并创建本地跟踪分支
+git checkout v2.0                                         # 检出版本v2.0
+git checkout -b devel origin/develop                      # 从远程分支develop创建新本地分支devel并检出
+git checkout -- README                                    # 检出head版本的README文件（可用于修改错误回退）
+git merge origin/master                                   # 合并远程master分支至当前分支
+git cherry-pick ff44785404a8e                             # 合并提交ff44785404a8e的修改
+git push origin master                                    # 将当前分支push到远程master分支
+git push origin :hotfixes/BJVEP933                        # 删除远程仓库的hotfixes/BJVEP933分支
+git push --tags                                           # 把所有tag推送到远程仓库
+git fetch                                                 # 获取所有远程分支（不更新本地分支，另需merge）
+git fetch --prune                                         # 获取所有原创分支并清除服务器上已删掉的分支
+git pull origin master                                    # 获取远程分支master并merge到当前分支
+git mv README README2                                     # 重命名文件README为README2
+git reset --hard HEAD                                     # 将当前版本重置为HEAD（通常用于merge失败回退）
+git rebase
+git branch -d hotfixes/BJVEP933                           # 删除分支hotfixes/BJVEP933（本分支修改已合并到其他分支）
+git branch -D hotfixes/BJVEP933                           # 强制删除分支hotfixes/BJVEP933
+git ls-files                                              # 列出git index包含的文件
+git show-branch                                           # 图示当前分支历史
+git show-branch --all                                     # 图示所有分支历史
+git whatchanged                                           # 显示提交历史对应的文件修改
+git revert dfb02e6e4f2f7b573337763e5c0013802e392818       # 撤销提交dfb02e6e4f2f7b573337763e5c0013802e392818
+git ls-tree HEAD                                          # 内部命令：显示某个git对象
+git rev-parse v2.0                                        # 内部命令：显示某个ref对于的SHA1 HASH
+git reflog                                                # 显示所有提交，包括孤立节点
+git show HEAD@&#123;5&#125;
+git show master@&#123;yesterday&#125;                               # 显示master分支昨天的状态
+git log --pretty=format:'%h %s' --graph                   # 图示提交日志
+git show HEAD~3
+git show -s --pretty=raw 2be7fcb476
+git stash                                                 # 暂存当前修改，将所有至为HEAD状态
+git stash list                                            # 查看所有暂存
+git stash show -p stash@&#123;0&#125;                               # 参考第一次暂存
+git stash apply stash@&#123;0&#125;                                 # 应用第一次暂存
+git grep "delete from"                                    # 文件中搜索文本“delete from”
+git grep -e '#define' --and -e SORT_DIRENT
+git gc
+git fsck<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <hr>
 
       
@@ -327,7 +413,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="Hexo常用命令"><a href="#Hexo常用命令" class="headerlink" title="Hexo常用命令"></a>Hexo常用命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;站点仓库的目录&gt; # 初始化一个站点目录</span><br><span class="line">hexo clean # 用于主题切换等涉及站点整体布局效果改变的行为时，清除hexo原有缓存</span><br><span class="line">hexo new page &#x27;页面名&#x27; # 新增页面(在source目录下新建个名字为&#x27;页面名&#x27;的文件夹，文件夹内为index.md)</span><br><span class="line">hexo new &#x27;博文标题&#x27; # 新增一篇博文</span><br><span class="line">hexo generate # 可简写为 hexo g ，编译生成静态页面文件</span><br><span class="line">hexo server # 可简写为 hexo s ，开启本地服务器预览与测试编译生成的静态页面效果</span><br><span class="line">hexo delpoy # 可简写为 hexo d ，部署站点到远程仓库</span><br><span class="line">hexo generate -d # 可简写为 hexo g -d ，编译生成静态页面文件并部署到远程仓库</span><br><span class="line">hexo deploy -g # 可简写为 hexo d -g ，同上</span><br></pre></td></tr></table></figure>
+          <h3 id="Hexo常用命令"><a href="#Hexo常用命令" class="headerlink" title="Hexo常用命令"></a>Hexo常用命令</h3><pre class="line-numbers language-none"><code class="language-none">hexo init &lt;站点仓库的目录&gt; # 初始化一个站点目录
+hexo clean # 用于主题切换等涉及站点整体布局效果改变的行为时，清除hexo原有缓存
+hexo new page &#39;页面名&#39; # 新增页面(在source目录下新建个名字为&#39;页面名&#39;的文件夹，文件夹内为index.md)
+hexo new &#39;博文标题&#39; # 新增一篇博文
+hexo generate # 可简写为 hexo g ，编译生成静态页面文件
+hexo server # 可简写为 hexo s ，开启本地服务器预览与测试编译生成的静态页面效果
+hexo delpoy # 可简写为 hexo d ，部署站点到远程仓库
+hexo generate -d # 可简写为 hexo g -d ，编译生成静态页面文件并部署到远程仓库
+hexo deploy -g # 可简写为 hexo d -g ，同上<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
       
     </div>
 
@@ -377,7 +471,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2018-06-20 19:17:29" itemprop="dateModified" datetime="2018-06-20T19:17:29+08:00">2018-06-20</time>
+                <time title="Modified: 2022-03-21 12:53:27" itemprop="dateModified" datetime="2022-03-21T12:53:27+08:00">2022-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -423,7 +517,7 @@
 <h2 id="粗斜体"><a href="#粗斜体" class="headerlink" title="粗斜体"></a>粗斜体</h2><p><em>斜体</em><br><strong>粗体</strong><br><em><strong>加粗斜体</strong></em><br><del>删除文字</del></p>
 <h2 id="分隔线"><a href="#分隔线" class="headerlink" title="分隔线"></a>分隔线</h2><p>在一行中用三个以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西。你也可以在星号或是减号中间插入空格。</p>
 <hr>
-<h2 id="鏈接"><a href="#鏈接" class="headerlink" title="鏈接"></a>鏈接</h2><p><a href="https://kirito-h.github.io/" title="枭羊小栈">行内式链接</a><br>[參考式鏈接①][1] [②][]<br>[1]: <a href="https://kirito-h.github.io/blog">https://kirito-h.github.io/blog</a><br>[②]: <a href="https://kirito-h.github.io/">https://kirito-h.github.io</a><br>自動鏈接: <a target="_blank" rel="noopener" href="http://example.com/">http://example.com/</a> <a href="mailto:&#x61;&#100;&#100;&#x72;&#x65;&#x73;&#x73;&#x40;&#101;&#x78;&#x61;&#109;&#x70;&#108;&#x65;&#46;&#99;&#x6f;&#x6d;">&#x61;&#100;&#100;&#x72;&#x65;&#x73;&#x73;&#x40;&#101;&#x78;&#x61;&#109;&#x70;&#108;&#x65;&#46;&#99;&#x6f;&#x6d;</a></p>
+<h2 id="鏈接"><a href="#鏈接" class="headerlink" title="鏈接"></a>鏈接</h2><p><a href="https://kirito-h.github.io/" title="枭羊小栈">行内式链接</a><br>[參考式鏈接①][1] [②][]<br>[1]: <a href="https://kirito-h.github.io/blog">https://kirito-h.github.io/blog</a><br>[②]: <a href="https://kirito-h.github.io/">https://kirito-h.github.io</a><br>自動鏈接: <a target="_blank" rel="noopener" href="http://example.com/">http://example.com/</a> <a href="mailto:&#x61;&#100;&#x64;&#x72;&#x65;&#x73;&#115;&#x40;&#101;&#x78;&#97;&#x6d;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#x6d;">&#x61;&#100;&#x64;&#x72;&#x65;&#x73;&#115;&#x40;&#101;&#x78;&#97;&#x6d;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#x6d;</a></p>
 <h3 id="锚点"><a href="#锚点" class="headerlink" title="锚点"></a>锚点</h3><p><em><a href="#top">返回顶部</a></em></p>
 <h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><table>
 <thead>
@@ -456,7 +550,7 @@
 <li>列表 3</li>
 </ol>
 <h2 id="縮進"><a href="#縮進" class="headerlink" title="縮進"></a>縮進</h2><ul>
-<li><p>轻轻的我走了， 正如我轻轻的来； 我轻轻的招手， 作别西天的云彩。<br>那河畔的金柳， 是夕阳中的新娘； 波光里的艳影， 在我的心头荡漾。 </p>
+<li><p>轻轻的我走了， 正如我轻轻的来； 我轻轻的招手， 作别西天的云彩。<br>那河畔的金柳， 是夕阳中的新娘； 波光里的艳影， 在我的心头荡漾。 我</p>
 <p>软泥上的青荇， 油油的在水底招摇； 在康河的柔波里， 我甘心做一条水草！ </p>
 </li>
 <li><p>那榆荫下的一潭， 不是清泉， 是天上虹； 揉碎在浮藻间， 沉淀着彩虹似的梦。<br>寻梦？撑一支长篙， 向青草更青处漫溯； 满载一船星辉， 在星辉斑斓里放歌。 </p>
@@ -467,9 +561,14 @@
 </ul>
 <h2 id="圖片"><a href="#圖片" class="headerlink" title="圖片"></a>圖片</h2><p><img src="https://wx1.sinaimg.cn/mw690/70396e5agy1fkvool9upoj215w1kwkjl.jpg" alt="Gakki" title="Gakki"></p>
 <h2 id="代碼"><a href="#代碼" class="headerlink" title="代碼"></a>代碼</h2><p>js中的<code>module.exports</code>怎麼理解?</p>
-<h3 id="代碼塊demo"><a href="#代碼塊demo" class="headerlink" title="代碼塊demo:"></a>代碼塊demo:</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">    printf(&quot;Hello world\n&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="代碼塊demo"><a href="#代碼塊demo" class="headerlink" title="代碼塊demo"></a>代碼塊demo</h3><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Hello world\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <footer>© 2017 Kirito Corporation</footer>
+
       
     </div>
 

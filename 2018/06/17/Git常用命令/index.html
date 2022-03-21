@@ -21,15 +21,15 @@
     var CONFIG = {"hostname":"kirito-h.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Tips: 当你执行 git branch (branchname) 时，Git 如何知道最新提交的 SHA-1 值呢？ 答案是 HEAD 文件。 HEAD 文件是一个符号引用（symbolic reference），指向目前所在的分支。 所谓符号引用，意味着它并不像普通引用那样包含一个 SHA-1 值——它是一个指向其他引用的指针。   Git常用命令一些常用的git命令，以备忘时之需。 123">
+  <meta name="description" content="Tips 当你执行 git branch (branchname) 时，Git 如何知道最新提交的 SHA-1 值呢？ 答案是 HEAD 文件。 HEAD 文件是一个符号引用（symbolic reference），指向目前所在的分支。 所谓符号引用，意味着它并不像普通引用那样包含一个 SHA-1 值——它是一个指向其他引用的指针。   Git常用命令一些常用的git命令，以备忘时之需。 git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git常用命令">
 <meta property="og:url" content="https://kirito-h.github.io/2018/06/17/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="梟羊小棧">
-<meta property="og:description" content="Tips: 当你执行 git branch (branchname) 时，Git 如何知道最新提交的 SHA-1 值呢？ 答案是 HEAD 文件。 HEAD 文件是一个符号引用（symbolic reference），指向目前所在的分支。 所谓符号引用，意味着它并不像普通引用那样包含一个 SHA-1 值——它是一个指向其他引用的指针。   Git常用命令一些常用的git命令，以备忘时之需。 123">
+<meta property="og:description" content="Tips 当你执行 git branch (branchname) 时，Git 如何知道最新提交的 SHA-1 值呢？ 答案是 HEAD 文件。 HEAD 文件是一个符号引用（symbolic reference），指向目前所在的分支。 所谓符号引用，意味着它并不像普通引用那样包含一个 SHA-1 值——它是一个指向其他引用的指针。   Git常用命令一些常用的git命令，以备忘时之需。 git">
 <meta property="og:locale" content="zh_HK">
 <meta property="article:published_time" content="2018-06-17T01:01:52.000Z">
-<meta property="article:modified_time" content="2018-06-20T10:55:04.463Z">
+<meta property="article:modified_time" content="2022-03-21T04:33:45.447Z">
 <meta property="article:author" content="梟羊 · Kirito">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
@@ -198,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2018-06-20 18:55:04" itemprop="dateModified" datetime="2018-06-20T18:55:04+08:00">2018-06-20</time>
+                <time title="Modified: 2022-03-21 12:33:45" itemprop="dateModified" datetime="2022-03-21T12:33:45+08:00">2022-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -235,13 +235,99 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips:"></a>Tips:</h3><ul>
+        <h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h3><ul>
 <li>当你执行 git branch (branchname) 时，Git 如何知道最新提交的 SHA-1 值呢？ 答案是 HEAD 文件。</li>
 <li>HEAD 文件是一个符号引用（symbolic reference），指向目前所在的分支。 所谓符号引用，意味着它并不像普通引用那样包含一个 SHA-1 值——它是一个指向其他引用的指针。</li>
 </ul>
 <hr>
 <h3 id="Git常用命令"><a href="#Git常用命令" class="headerlink" title="Git常用命令"></a>Git常用命令</h3><p>一些常用的git命令，以备忘时之需。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">git init                                                  # 初始化本地git仓库（创建新仓库）</span><br><span class="line">git config --global user.name &quot;xxx&quot;                       # 配置用户名</span><br><span class="line">git config --global user.email &quot;xxx@xxx.com&quot;              # 配置邮件</span><br><span class="line">git config --global color.ui true                         # git status等命令自动着色</span><br><span class="line">git config --global color.status auto</span><br><span class="line">git config --global color.diff auto</span><br><span class="line">git config --global color.branch auto</span><br><span class="line">git config --global color.interactive auto</span><br><span class="line">git config --global --unset http.proxy                    # remove  proxy configuration on git</span><br><span class="line">git clone git+ssh://git@192.168.53.168/VT.git             # clone远程仓库</span><br><span class="line">git status                                                # 查看当前版本状态（是否修改）</span><br><span class="line">git add xyz                                               # 添加xyz文件至index</span><br><span class="line">git add .                                                 # 增加当前子目录下所有更改过的文件至index</span><br><span class="line">git commit -m &#x27;xxx&#x27;                                       # 提交</span><br><span class="line">git commit --amend -m &#x27;xxx&#x27;                               # 合并上一次提交（用于反复修改）</span><br><span class="line">git commit -am &#x27;xxx&#x27;                                      # 将add和commit合为一步</span><br><span class="line">git rm xxx                                                # 删除index中的文件</span><br><span class="line">git rm -r *                                               # 递归删除</span><br><span class="line">git log                                                   # 显示提交日志</span><br><span class="line">git log -1                                                # 显示1行日志 -n为n行</span><br><span class="line">git log -5</span><br><span class="line">git log --stat                                            # 显示提交日志及相关变动文件</span><br><span class="line">git log -p -m</span><br><span class="line">git show dfb02e6e4f2f7b573337763e5c0013802e392818         # 显示某个提交的详细内容</span><br><span class="line">git show dfb02                                            # 可只用commitid的前几位</span><br><span class="line">git show HEAD                                             # 显示HEAD提交日志</span><br><span class="line">git show HEAD^                                            # 显示HEAD的父（上一个版本）的提交日志 ^^为上两个版本 ^5为上5个版本</span><br><span class="line">git tag                                                   # 显示已存在的tag</span><br><span class="line">git tag -a v2.0 -m &#x27;xxx&#x27;                                  # 增加v2.0的tag</span><br><span class="line">git show v2.0                                             # 显示v2.0的日志及详细内容</span><br><span class="line">git log v2.0                                              # 显示v2.0的日志</span><br><span class="line">git diff                                                  # 显示所有未添加至index的变更</span><br><span class="line">git diff --cached                                         # 显示所有已添加index但还未commit的变更</span><br><span class="line">git diff HEAD^                                            # 比较与上一个版本的差异</span><br><span class="line">git diff HEAD -- ./lib                                    # 比较与HEAD版本lib目录的差异</span><br><span class="line">git diff origin/master..master                            # 比较远程分支master上有本地分支master上没有的</span><br><span class="line">git diff origin/master..master --stat                     # 只显示差异的文件，不显示具体内容</span><br><span class="line">git remote add origin git+ssh://git@192.168.53.168/VT.git # 增加远程定义（用于push/pull/fetch）</span><br><span class="line">git branch                                                # 显示本地分支</span><br><span class="line">git branch --contains 50089                               # 显示包含提交50089的分支</span><br><span class="line">git branch -a                                             # 显示所有分支</span><br><span class="line">git branch -r                                             # 显示所有原创分支</span><br><span class="line">git branch --merged                                       # 显示所有已合并到当前分支的分支</span><br><span class="line">git branch --no-merged                                    # 显示所有未合并到当前分支的分支</span><br><span class="line">git branch -m master master_copy                          # 本地分支改名</span><br><span class="line">git checkout -b master_copy                               # 从当前分支创建新分支master_copy并检出</span><br><span class="line">git checkout -b master master_copy                        # 上面的完整版</span><br><span class="line">git checkout features/performance                         # 检出已存在的features/performance分支</span><br><span class="line">git checkout --track hotfixes/BJVEP933                    # 检出远程分支hotfixes/BJVEP933并创建本地跟踪分支</span><br><span class="line">git checkout v2.0                                         # 检出版本v2.0</span><br><span class="line">git checkout -b devel origin/develop                      # 从远程分支develop创建新本地分支devel并检出</span><br><span class="line">git checkout -- README                                    # 检出head版本的README文件（可用于修改错误回退）</span><br><span class="line">git merge origin/master                                   # 合并远程master分支至当前分支</span><br><span class="line">git cherry-pick ff44785404a8e                             # 合并提交ff44785404a8e的修改</span><br><span class="line">git push origin master                                    # 将当前分支push到远程master分支</span><br><span class="line">git push origin :hotfixes/BJVEP933                        # 删除远程仓库的hotfixes/BJVEP933分支</span><br><span class="line">git push --tags                                           # 把所有tag推送到远程仓库</span><br><span class="line">git fetch                                                 # 获取所有远程分支（不更新本地分支，另需merge）</span><br><span class="line">git fetch --prune                                         # 获取所有原创分支并清除服务器上已删掉的分支</span><br><span class="line">git pull origin master                                    # 获取远程分支master并merge到当前分支</span><br><span class="line">git mv README README2                                     # 重命名文件README为README2</span><br><span class="line">git reset --hard HEAD                                     # 将当前版本重置为HEAD（通常用于merge失败回退）</span><br><span class="line">git rebase</span><br><span class="line">git branch -d hotfixes/BJVEP933                           # 删除分支hotfixes/BJVEP933（本分支修改已合并到其他分支）</span><br><span class="line">git branch -D hotfixes/BJVEP933                           # 强制删除分支hotfixes/BJVEP933</span><br><span class="line">git ls-files                                              # 列出git index包含的文件</span><br><span class="line">git show-branch                                           # 图示当前分支历史</span><br><span class="line">git show-branch --all                                     # 图示所有分支历史</span><br><span class="line">git whatchanged                                           # 显示提交历史对应的文件修改</span><br><span class="line">git revert dfb02e6e4f2f7b573337763e5c0013802e392818       # 撤销提交dfb02e6e4f2f7b573337763e5c0013802e392818</span><br><span class="line">git ls-tree HEAD                                          # 内部命令：显示某个git对象</span><br><span class="line">git rev-parse v2.0                                        # 内部命令：显示某个ref对于的SHA1 HASH</span><br><span class="line">git reflog                                                # 显示所有提交，包括孤立节点</span><br><span class="line">git show HEAD@&#123;5&#125;</span><br><span class="line">git show master@&#123;yesterday&#125;                               # 显示master分支昨天的状态</span><br><span class="line">git log --pretty=format:&#x27;%h %s&#x27; --graph                   # 图示提交日志</span><br><span class="line">git show HEAD~3</span><br><span class="line">git show -s --pretty=raw 2be7fcb476</span><br><span class="line">git stash                                                 # 暂存当前修改，将所有至为HEAD状态</span><br><span class="line">git stash list                                            # 查看所有暂存</span><br><span class="line">git stash show -p stash@&#123;0&#125;                               # 参考第一次暂存</span><br><span class="line">git stash apply stash@&#123;0&#125;                                 # 应用第一次暂存</span><br><span class="line">git grep &quot;delete from&quot;                                    # 文件中搜索文本“delete from”</span><br><span class="line">git grep -e &#x27;#define&#x27; --and -e SORT_DIRENT</span><br><span class="line">git gc</span><br><span class="line">git fsck</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">git init                                                  # 初始化本地git仓库（创建新仓库）
+git config --global user.name "xxx"                       # 配置用户名
+git config --global user.email "xxx@xxx.com"              # 配置邮件
+git config --global color.ui true                         # git status等命令自动着色
+git config --global color.status auto
+git config --global color.diff auto
+git config --global color.branch auto
+git config --global color.interactive auto
+git config --global --unset http.proxy                    # remove  proxy configuration on git
+git clone git+ssh://git@192.168.53.168/VT.git             # clone远程仓库
+git status                                                # 查看当前版本状态（是否修改）
+git add xyz                                               # 添加xyz文件至index
+git add .                                                 # 增加当前子目录下所有更改过的文件至index
+git commit -m 'xxx'                                       # 提交
+git commit --amend -m 'xxx'                               # 合并上一次提交（用于反复修改）
+git commit -am 'xxx'                                      # 将add和commit合为一步
+git rm xxx                                                # 删除index中的文件
+git rm -r *                                               # 递归删除
+git log                                                   # 显示提交日志
+git log -1                                                # 显示1行日志 -n为n行
+git log -5
+git log --stat                                            # 显示提交日志及相关变动文件
+git log -p -m
+git show dfb02e6e4f2f7b573337763e5c0013802e392818         # 显示某个提交的详细内容
+git show dfb02                                            # 可只用commitid的前几位
+git show HEAD                                             # 显示HEAD提交日志
+git show HEAD^                                            # 显示HEAD的父（上一个版本）的提交日志 ^^为上两个版本 ^5为上5个版本
+git tag                                                   # 显示已存在的tag
+git tag -a v2.0 -m 'xxx'                                  # 增加v2.0的tag
+git show v2.0                                             # 显示v2.0的日志及详细内容
+git log v2.0                                              # 显示v2.0的日志
+git diff                                                  # 显示所有未添加至index的变更
+git diff --cached                                         # 显示所有已添加index但还未commit的变更
+git diff HEAD^                                            # 比较与上一个版本的差异
+git diff HEAD -- ./lib                                    # 比较与HEAD版本lib目录的差异
+git diff origin/master..master                            # 比较远程分支master上有本地分支master上没有的
+git diff origin/master..master --stat                     # 只显示差异的文件，不显示具体内容
+git remote add origin git+ssh://git@192.168.53.168/VT.git # 增加远程定义（用于push/pull/fetch）
+git branch                                                # 显示本地分支
+git branch --contains 50089                               # 显示包含提交50089的分支
+git branch -a                                             # 显示所有分支
+git branch -r                                             # 显示所有原创分支
+git branch --merged                                       # 显示所有已合并到当前分支的分支
+git branch --no-merged                                    # 显示所有未合并到当前分支的分支
+git branch -m master master_copy                          # 本地分支改名
+git checkout -b master_copy                               # 从当前分支创建新分支master_copy并检出
+git checkout -b master master_copy                        # 上面的完整版
+git checkout features/performance                         # 检出已存在的features/performance分支
+git checkout --track hotfixes/BJVEP933                    # 检出远程分支hotfixes/BJVEP933并创建本地跟踪分支
+git checkout v2.0                                         # 检出版本v2.0
+git checkout -b devel origin/develop                      # 从远程分支develop创建新本地分支devel并检出
+git checkout -- README                                    # 检出head版本的README文件（可用于修改错误回退）
+git merge origin/master                                   # 合并远程master分支至当前分支
+git cherry-pick ff44785404a8e                             # 合并提交ff44785404a8e的修改
+git push origin master                                    # 将当前分支push到远程master分支
+git push origin :hotfixes/BJVEP933                        # 删除远程仓库的hotfixes/BJVEP933分支
+git push --tags                                           # 把所有tag推送到远程仓库
+git fetch                                                 # 获取所有远程分支（不更新本地分支，另需merge）
+git fetch --prune                                         # 获取所有原创分支并清除服务器上已删掉的分支
+git pull origin master                                    # 获取远程分支master并merge到当前分支
+git mv README README2                                     # 重命名文件README为README2
+git reset --hard HEAD                                     # 将当前版本重置为HEAD（通常用于merge失败回退）
+git rebase
+git branch -d hotfixes/BJVEP933                           # 删除分支hotfixes/BJVEP933（本分支修改已合并到其他分支）
+git branch -D hotfixes/BJVEP933                           # 强制删除分支hotfixes/BJVEP933
+git ls-files                                              # 列出git index包含的文件
+git show-branch                                           # 图示当前分支历史
+git show-branch --all                                     # 图示所有分支历史
+git whatchanged                                           # 显示提交历史对应的文件修改
+git revert dfb02e6e4f2f7b573337763e5c0013802e392818       # 撤销提交dfb02e6e4f2f7b573337763e5c0013802e392818
+git ls-tree HEAD                                          # 内部命令：显示某个git对象
+git rev-parse v2.0                                        # 内部命令：显示某个ref对于的SHA1 HASH
+git reflog                                                # 显示所有提交，包括孤立节点
+git show HEAD@&#123;5&#125;
+git show master@&#123;yesterday&#125;                               # 显示master分支昨天的状态
+git log --pretty=format:'%h %s' --graph                   # 图示提交日志
+git show HEAD~3
+git show -s --pretty=raw 2be7fcb476
+git stash                                                 # 暂存当前修改，将所有至为HEAD状态
+git stash list                                            # 查看所有暂存
+git stash show -p stash@&#123;0&#125;                               # 参考第一次暂存
+git stash apply stash@&#123;0&#125;                                 # 应用第一次暂存
+git grep "delete from"                                    # 文件中搜索文本“delete from”
+git grep -e '#define' --and -e SORT_DIRENT
+git gc
+git fsck<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <hr>
 
     </div>
@@ -324,7 +410,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tips"><span class="nav-number">1.</span> <span class="nav-text">Tips:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">Git常用命令</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tips"><span class="nav-number">1.</span> <span class="nav-text">Tips</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">Git常用命令</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
