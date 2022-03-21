@@ -195,7 +195,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-03-21 12:33:45" itemprop="dateModified" datetime="2022-03-21T12:33:45+08:00">2022-03-21</time>
+                <time title="Modified: 2022-03-21 14:01:17" itemprop="dateModified" datetime="2022-03-21T14:01:17+08:00">2022-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -238,95 +238,14 @@
 </ul>
 <hr>
 <h3 id="Git常用命令"><a href="#Git常用命令" class="headerlink" title="Git常用命令"></a>Git常用命令</h3><p>一些常用的git命令，以备忘时之需。</p>
-<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">git init                                                  # 初始化本地git仓库（创建新仓库）
-git config --global user.name "xxx"                       # 配置用户名
-git config --global user.email "xxx@xxx.com"              # 配置邮件
-git config --global color.ui true                         # git status等命令自动着色
-git config --global color.status auto
-git config --global color.diff auto
-git config --global color.branch auto
-git config --global color.interactive auto
-git config --global --unset http.proxy                    # remove  proxy configuration on git
-git clone git+ssh://git@192.168.53.168/VT.git             # clone远程仓库
-git status                                                # 查看当前版本状态（是否修改）
-git add xyz                                               # 添加xyz文件至index
-git add .                                                 # 增加当前子目录下所有更改过的文件至index
-git commit -m 'xxx'                                       # 提交
-git commit --amend -m 'xxx'                               # 合并上一次提交（用于反复修改）
-git commit -am 'xxx'                                      # 将add和commit合为一步
-git rm xxx                                                # 删除index中的文件
-git rm -r *                                               # 递归删除
-git log                                                   # 显示提交日志
-git log -1                                                # 显示1行日志 -n为n行
-git log -5
-git log --stat                                            # 显示提交日志及相关变动文件
-git log -p -m
-git show dfb02e6e4f2f7b573337763e5c0013802e392818         # 显示某个提交的详细内容
-git show dfb02                                            # 可只用commitid的前几位
-git show HEAD                                             # 显示HEAD提交日志
-git show HEAD^                                            # 显示HEAD的父（上一个版本）的提交日志 ^^为上两个版本 ^5为上5个版本
-git tag                                                   # 显示已存在的tag
-git tag -a v2.0 -m 'xxx'                                  # 增加v2.0的tag
-git show v2.0                                             # 显示v2.0的日志及详细内容
-git log v2.0                                              # 显示v2.0的日志
-git diff                                                  # 显示所有未添加至index的变更
-git diff --cached                                         # 显示所有已添加index但还未commit的变更
-git diff HEAD^                                            # 比较与上一个版本的差异
-git diff HEAD -- ./lib                                    # 比较与HEAD版本lib目录的差异
-git diff origin/master..master                            # 比较远程分支master上有本地分支master上没有的
-git diff origin/master..master --stat                     # 只显示差异的文件，不显示具体内容
-git remote add origin git+ssh://git@192.168.53.168/VT.git # 增加远程定义（用于push/pull/fetch）
-git branch                                                # 显示本地分支
-git branch --contains 50089                               # 显示包含提交50089的分支
-git branch -a                                             # 显示所有分支
-git branch -r                                             # 显示所有原创分支
-git branch --merged                                       # 显示所有已合并到当前分支的分支
-git branch --no-merged                                    # 显示所有未合并到当前分支的分支
-git branch -m master master_copy                          # 本地分支改名
-git checkout -b master_copy                               # 从当前分支创建新分支master_copy并检出
-git checkout -b master master_copy                        # 上面的完整版
-git checkout features/performance                         # 检出已存在的features/performance分支
-git checkout --track hotfixes/BJVEP933                    # 检出远程分支hotfixes/BJVEP933并创建本地跟踪分支
-git checkout v2.0                                         # 检出版本v2.0
-git checkout -b devel origin/develop                      # 从远程分支develop创建新本地分支devel并检出
-git checkout -- README                                    # 检出head版本的README文件（可用于修改错误回退）
-git merge origin/master                                   # 合并远程master分支至当前分支
-git cherry-pick ff44785404a8e                             # 合并提交ff44785404a8e的修改
-git push origin master                                    # 将当前分支push到远程master分支
-git push origin :hotfixes/BJVEP933                        # 删除远程仓库的hotfixes/BJVEP933分支
-git push --tags                                           # 把所有tag推送到远程仓库
-git fetch                                                 # 获取所有远程分支（不更新本地分支，另需merge）
-git fetch --prune                                         # 获取所有原创分支并清除服务器上已删掉的分支
-git pull origin master                                    # 获取远程分支master并merge到当前分支
-git mv README README2                                     # 重命名文件README为README2
-git reset --hard HEAD                                     # 将当前版本重置为HEAD（通常用于merge失败回退）
-git rebase
-git branch -d hotfixes/BJVEP933                           # 删除分支hotfixes/BJVEP933（本分支修改已合并到其他分支）
-git branch -D hotfixes/BJVEP933                           # 强制删除分支hotfixes/BJVEP933
-git ls-files                                              # 列出git index包含的文件
-git show-branch                                           # 图示当前分支历史
-git show-branch --all                                     # 图示所有分支历史
-git whatchanged                                           # 显示提交历史对应的文件修改
-git revert dfb02e6e4f2f7b573337763e5c0013802e392818       # 撤销提交dfb02e6e4f2f7b573337763e5c0013802e392818
-git ls-tree HEAD                                          # 内部命令：显示某个git对象
-git rev-parse v2.0                                        # 内部命令：显示某个ref对于的SHA1 HASH
-git reflog                                                # 显示所有提交，包括孤立节点
-git show HEAD@&#123;5&#125;
-git show master@&#123;yesterday&#125;                               # 显示master分支昨天的状态
-git log --pretty=format:'%h %s' --graph                   # 图示提交日志
-git show HEAD~3
-git show -s --pretty=raw 2be7fcb476
-git stash                                                 # 暂存当前修改，将所有至为HEAD状态
-git stash list                                            # 查看所有暂存
-git stash show -p stash@&#123;0&#125;                               # 参考第一次暂存
-git stash apply stash@&#123;0&#125;                                 # 应用第一次暂存
-git grep "delete from"                                    # 文件中搜索文本“delete from”
-git grep -e '#define' --and -e SORT_DIRENT
-git gc
-git fsck<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<hr>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/06/17/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -471,7 +390,7 @@ hexo deploy -g # 可简写为 hexo d -g ，同上<span aria-hidden="true" class=
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-03-21 12:53:27" itemprop="dateModified" datetime="2022-03-21T12:53:27+08:00">2022-03-21</time>
+                <time title="Modified: 2022-03-21 14:02:00" itemprop="dateModified" datetime="2022-03-21T14:02:00+08:00">2022-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -514,61 +433,14 @@ hexo deploy -g # 可简写为 hexo d -g ，同上<span aria-hidden="true" class=
       
           <p><span id='top'></span></p>
 <h2 id="语法参考"><a href="#语法参考" class="headerlink" title="语法参考"></a>语法参考</h2><p><em><strong><a target="_blank" rel="noopener" href="http://xianbai.me/learn-md/article/about/readme.html">戳这里</a></strong></em></p>
-<h2 id="粗斜体"><a href="#粗斜体" class="headerlink" title="粗斜体"></a>粗斜体</h2><p><em>斜体</em><br><strong>粗体</strong><br><em><strong>加粗斜体</strong></em><br><del>删除文字</del></p>
-<h2 id="分隔线"><a href="#分隔线" class="headerlink" title="分隔线"></a>分隔线</h2><p>在一行中用三个以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西。你也可以在星号或是减号中间插入空格。</p>
-<hr>
-<h2 id="鏈接"><a href="#鏈接" class="headerlink" title="鏈接"></a>鏈接</h2><p><a href="https://kirito-h.github.io/" title="枭羊小栈">行内式链接</a><br>[參考式鏈接①][1] [②][]<br>[1]: <a href="https://kirito-h.github.io/blog">https://kirito-h.github.io/blog</a><br>[②]: <a href="https://kirito-h.github.io/">https://kirito-h.github.io</a><br>自動鏈接: <a target="_blank" rel="noopener" href="http://example.com/">http://example.com/</a> <a href="mailto:&#x61;&#100;&#x64;&#x72;&#x65;&#x73;&#115;&#x40;&#101;&#x78;&#97;&#x6d;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#x6d;">&#x61;&#100;&#x64;&#x72;&#x65;&#x73;&#115;&#x40;&#101;&#x78;&#97;&#x6d;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#x6d;</a></p>
-<h3 id="锚点"><a href="#锚点" class="headerlink" title="锚点"></a>锚点</h3><p><em><a href="#top">返回顶部</a></em></p>
-<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><table>
-<thead>
-<tr>
-<th>姓名</th>
-<th align="right">兴趣</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>阿诺舒华</td>
-<td align="right">打人</td>
-</tr>
-<tr>
-<td>辛力加</td>
-<td align="right">被打</td>
-</tr>
-</tbody></table>
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="無序列表"><a href="#無序列表" class="headerlink" title="無序列表"></a>無序列表</h3><ul>
-<li>列表 1</li>
-</ul>
-<ul>
-<li>列表 2</li>
-</ul>
-<ul>
-<li>列表 3</li>
-</ul>
-<h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><ol>
-<li>列表 1</li>
-<li>列表 2</li>
-<li>列表 3</li>
-</ol>
-<h2 id="縮進"><a href="#縮進" class="headerlink" title="縮進"></a>縮進</h2><ul>
-<li><p>轻轻的我走了， 正如我轻轻的来； 我轻轻的招手， 作别西天的云彩。<br>那河畔的金柳， 是夕阳中的新娘； 波光里的艳影， 在我的心头荡漾。 我</p>
-<p>软泥上的青荇， 油油的在水底招摇； 在康河的柔波里， 我甘心做一条水草！ </p>
-</li>
-<li><p>那榆荫下的一潭， 不是清泉， 是天上虹； 揉碎在浮藻间， 沉淀着彩虹似的梦。<br>寻梦？撑一支长篙， 向青草更青处漫溯； 满载一船星辉， 在星辉斑斓里放歌。 </p>
-<blockquote>
-<p>引用1<br>引用2</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="圖片"><a href="#圖片" class="headerlink" title="圖片"></a>圖片</h2><p><img src="https://wx1.sinaimg.cn/mw690/70396e5agy1fkvool9upoj215w1kwkjl.jpg" alt="Gakki" title="Gakki"></p>
-<h2 id="代碼"><a href="#代碼" class="headerlink" title="代碼"></a>代碼</h2><p>js中的<code>module.exports</code>怎麼理解?</p>
-<h3 id="代碼塊demo"><a href="#代碼塊demo" class="headerlink" title="代碼塊demo"></a>代碼塊demo</h3><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Hello world\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<footer>© 2017 Kirito Corporation</footer>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2017/11/29/MD%E8%AA%9E%E6%B3%95%E5%AF%A6%E8%B8%90/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
