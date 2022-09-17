@@ -297,7 +297,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-17 13:38:52" itemprop="dateModified" datetime="2022-09-17T13:38:52+08:00">2022-09-17</time>
+                <time title="Modified: 2022-09-17 15:07:12" itemprop="dateModified" datetime="2022-09-17T15:07:12+08:00">2022-09-17</time>
               </span>
 
           
@@ -326,35 +326,35 @@
 
       
           <p style="text-indent: 2em">
-有挺长一段时间没有整理这个网站了，最近想起打开自己网站看看，结果发现访问报错了，我当时输入的是 'kirito.xyz' 这个顶级域名，错误提示如下：
+有挺长一段时间没有整理这个网站了，最近想起打开自己网站看看，结果发现访问报错了，我当时是直接输入的 'kirito.xyz' 这个顶级域名，错误提示如下：
 </p>
+
 
 <blockquote>
 <p>Fastly error: unknown domain: kirito.xyz. Please check that this domain has been added to a service.<br>…</p>
 </blockquote>
 <p style="text-indent: 2em">
-看到这个提示我当时一脸懵逼，心想这是什么鬼啊，我上次弄完明明都可以正常访问的啊...然后就惯例去 Google 了下，知道了这是域名解析出错了才会有的提示。
+看到这个我一脸懵逼，心想这是什么鬼啊，我上次弄完明明都可以正常访问的啊...然后就去 Google 了下，原来这提示是表示<strong>域名解析出错了</strong>。
 </p>
 <p style="text-indent: 2em">
-我这网站是用的 'GitHub Pages' 的免费空间，自己另买了个简短的域名，然后通过配置 CNAME 将自己域名解析到 GitHub 的域名（也就是 'xxx.github.io'），之前配置完通过顶级域名和添加 www 前缀的方式都是可以访问的。
+简单说明下，我这网站用的是 GitHub Pages 的免费空间，自己另买了个简短的域名，然后通过配置 CNAME 将自己域名解析映射到 GitHub Pages 的域名（也就是 'xxx.github.io'），之前配置完通过顶级域名和带 www 前缀两种方式是都可以正常访问的。
 </p>
 <p style="text-indent: 2em">
-既然是域名解析的问题，就得去阿里云找答案了（域名是阿里云上买的）。
+既然是域名解析的问题，就得去阿里云找答案了（域名是阿里云上买的）。几经翻寻，在帮助中心找到了一篇和我的问题很贴合的文章：
 </p>
-<p style="text-indent: 2em">
-几经翻寻，在帮助中心找到了一篇和我的问题很贴合的文章：
-</p>
+
 
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/39786.html">不带 www 的域名和带 www 域名都能访问网站</a></p>
 </blockquote>
 <p style="text-indent: 2em">
-按着文章的指引，我把旧的解析记录删了，重新添加了主机记录：
+看完文章，我把旧的解析记录删了，重新添加了主机记录：
 </p>
+
 
 <p><img src="/../images/dns_1.png" alt="&#39;&#39;" title="域名解析主机记录"></p>
 <p style="text-indent: 2em">
-对应的我 'xxx.gitHub.io' 项目里的 CNAME 文件直接写的不带前缀的 'kirito.xyz'。之后重新刷新页面，就能正常打开了。
+另外，对应的我 'xxx.gitHub.io' 项目里的 CNAME 文件是直接写的 'kirito.xyz'。之后回到网页，强刷新一次，就都能正常打开了。
 </p>
 <p style="text-indent: 2em">
 以上。
