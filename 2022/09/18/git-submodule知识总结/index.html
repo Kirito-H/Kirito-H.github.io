@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="zh-hk">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+<meta name="referrer" content="no-referrer" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favico_32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favico_16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kirito-h.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="总结 Git 子模块（submodule）的相关概念及用法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git submodule知识总结">
+<meta property="og:url" content="https://kirito-h.github.io/2022/09/18/git-submodule%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="梟羊小棧">
+<meta property="og:description" content="总结 Git 子模块（submodule）的相关概念及用法">
+<meta property="og:locale" content="zh_HK">
+<meta property="article:published_time" content="2022-09-18T08:55:51.000Z">
+<meta property="article:modified_time" content="2022-09-18T14:51:13.372Z">
+<meta property="article:author" content="梟羊 · Kirito">
+<meta property="article:tag" content="git submodule">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://kirito-h.github.io/2022/09/18/git-submodule%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-hk'
+  };
+</script>
+
+  <title>git submodule知识总结 | 梟羊小棧</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">梟羊小棧</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">個人博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-hk">
+    <link itemprop="mainEntityOfPage" href="https://kirito-h.github.io/2022/09/18/git-submodule%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="梟羊 · Kirito">
+      <meta itemprop="description" content="找到活著的意義，便能生存">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="梟羊小棧">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          git submodule知识总结
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-09-18 16:55:51 / Modified: 22:51:13" itemprop="dateCreated datePublished" datetime="2022-09-18T16:55:51+08:00">2022-09-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2022/09/18/git-submodule%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/09/18/git-submodule%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>由于blog项目中有用到git submodule，就想着总结些用法相关的内容放在这备忘，然后搜集过程中发现了一篇挺不错的总结文，索性就直接搬过来了。感谢原作者。︿(￣︶￣)︿</p>
+<blockquote>
+<p>本文转载自：<a target="_blank" rel="noopener" href="https://knightyun.github.io/2021/03/21/git-submodule">https://knightyun.github.io/2021/03/21/git-submodule</a></p>
+</blockquote>
+<hr>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>先引用 <code>git</code> 的官方定义描述：</p>
+<blockquote>
+<p>A submodule is a repository embedded inside another repository. The submodule has its own history; the repository it is embedded in is called a superproject.</p>
+</blockquote>
+<p>子模块（<code>submodule</code>）是一个内嵌在其他 git 仓库（父工程）中的 git 仓库，子模块有自己的 git 记录。</p>
+<p>通常，如果一个仓库存在子模块，父工程目录下的 <code>.git/modules/</code> 目录中会存在一个 <code>git</code> 目录，子模块的仓库目录会存在于父工程的仓库目录中，并且子模块的仓库目录中也会存在一个 <code>.git</code> 目录；</p>
+<p>使用场景：</p>
+<ul>
+<li>想要在一个工程中使用另一个工程，但是那个工程包含了单独的提交记录，<code>submodule</code> 就可以实现在一个工程中引入另一个工程，同时保留二者的提交记录并且区分开来；目前 <code>submodule</code> 还能实现单独开发子工程，并且不会影响父工程，父工程可以在需要的时候更新子模块的版本；</li>
+<li>想要把一个工程拆分成多个仓库并进行集中管理，这可以用来实现 <code>git</code> 当前的限制，实现更细粒度的访问，解决当仓库过于庞大时所出现的传输量大、提交记录冗杂、权限分设等问题；</li>
+</ul>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="新增子模块"><a href="#新增子模块" class="headerlink" title="新增子模块"></a>新增子模块</h3><p>向一个项目中添加子模块：</p>
+<pre><code>git submodule add https://github.com/yyy/xxx.git
+</code></pre>
+<p>之后会 <code>clone</code> 该子模块对应的远程项目文件到本地父项目目录下的同名文件夹中（<code>./xxx/</code>），父项目下也会多一个叫 <code>.gitmodules</code> 的文件，内容大致为：</p>
+<pre class="line-numbers language-none"><code class="language-none">[submodule &quot;xxx&quot;]
+	path &#x3D; xxx
+	url &#x3D; git@github.com:yyy&#x2F;xxx.git<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>如果存在多个子模块，则会继续向该文件中追加与上面相同格式的内容；</p>
+<p>同时父项目下的 <code>.git</code> 目录中也会新增 <code>/modules/xxx/</code> 目录，里面的内容对应子模块仓库中原有的 <code>.git</code> 目录中的文件，此时虽然子模块目录下的 <code>.git</code> 依然存在，但是已经由一个文件夹变成了文件，内容为：</p>
+<pre class="line-numbers language-none"><code class="language-none">gitdir: ..&#x2F;.git&#x2F;modules&#x2F;xxx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>即指向了父项目的 <code>.git/modules/xxx</code> 目录；如果运行 <code>git config --list</code> 查看项目的配置，也会发现多了类似下面两行的内容：</p>
+<pre class="line-numbers language-none"><code class="language-none">submodule.xxx.url&#x3D;git@github.com:yyy&#x2F;xxx.git
+submodule.xxx.active&#x3D;true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>如果修改 <code>submodule.xxx.url</code> 的值，则会覆盖 <code>.gitmodules</code> 文件中对应的 <code>url</code> 值；</p>
+<h3 id="查看子模块"><a href="#查看子模块" class="headerlink" title="查看子模块"></a>查看子模块</h3><p>查看当前项目下的子模块：</p>
+<blockquote>
+<p><code>git submodule</code></p>
+</blockquote>
+<p> 或者</p>
+<blockquote>
+<p><code>git submodule status</code></p>
+</blockquote>
+<p>输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">70c316ecb7c41a5bdf8a37ff93bf866d3b903388 xxx (heads&#x2F;master)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>如果将父项目推送到远程仓库（如 Github），在网页浏览该项目时子模块所在的目录会多一个类似 <strong><code>@70c316e</code></strong> 的后缀，即上面查看子模块命令输出内容的 hash 值的前面部分，点击这个目录会跳转到这个子模块对应的仓库地址（另一个 url）；</p>
+<p>如果执行：</p>
+<pre><code>git submodule deinit
+</code></pre>
+<p>删除了子模块，则再次查看时输出会是这样的：</p>
+<pre class="line-numbers language-none"><code class="language-none">-70c316ecb7c41a5bdf8a37ff93bf866d3b903388 xxx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<h3 id="拉取子模块"><a href="#拉取子模块" class="headerlink" title="拉取子模块"></a>拉取子模块</h3><p>如果要 <code>clone</code> 一个项目，并且包含其子模块的文件，则需要给 <code>git clone</code> 命令最后加上 <code>--recurse-submodules</code> 或者 <code>--recursive</code> 参数（<strong>否则</strong>只会下载一个空的子模块文件）：</p>
+<pre><code>git clone https://github.com/yyy/xxx.git --recursive
+</code></pre>
+<p>当然，克隆时忘记了加这个参数，后续也有办法去拉取子模块的文件，首先执行：</p>
+<pre><code>git submodule init
+</code></pre>
+<p>这会初始化子模块相关配置，比如自动在 <code>config</code> 中加入下面两行内容：</p>
+<pre class="line-numbers language-none"><code class="language-none">submodule.xxx.url&#x3D;git@github.com:yyy&#x2F;xxx.git
+submodule.xxx.active&#x3D;true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>然后执行：</p>
+<pre><code>git submodule update
+</code></pre>
+<p>就可以拉取到子模块仓库中的文件了，也可以将这两步命令合并为一步：</p>
+<pre><code>git submodule update --init
+</code></pre>
+<p>要拉取所有层层嵌套的子模块，则执行：</p>
+<pre><code>git submodule update --init --recursive
+</code></pre>
+<p>之前 <code>clone</code> 时加参数不过是自动执行初始化配置并拉取子模块（甚至嵌套的子模块）中的文件罢了；</p>
+<p>命令默认拉取<strong>主分支</strong>（<code>master</code>），想要修改这个默认拉取分支可以修改 <code>.gitmodules</code> 文件中子模块对应的 <code>branch</code> 值，或者执行：</p>
+<pre><code>git config submodule.xxx.branch dev
+</code></pre>
+<p>或者执行同时将配置写入文件，这样其他人拉取父项目也会获取该配置：</p>
+<pre><code>git config -f .gitmodules submodule.xxx.branch dev
+</code></pre>
+<h3 id="更新子模块"><a href="#更新子模块" class="headerlink" title="更新子模块"></a>更新子模块</h3><h4 id="拉取更新"><a href="#拉取更新" class="headerlink" title="拉取更新"></a>拉取更新</h4><p>获取子模块仓库的最新提交，同步远程分支的变更，可以直接在子模块目录下执行：</p>
+<pre><code>git pull
+</code></pre>
+<p>或者在父目录下执行：</p>
+<pre><code>git submodule update --remote
+</code></pre>
+<p>这里给 <code>git submodule update</code> 加上 <strong><code>--remote</code></strong> 是为了直接从子模块的当前分支的远程追踪分支获取最新变更，不加则是默认从父项目的 <code>SHA-1</code> 记录中获取变更；当有多个子模块时，该命令默认拉取<strong>所有</strong>子模块的变更，指定更新子模块 <code>xxx</code> 需要执行：</p>
+<pre><code>git submodule update --remote xxx
+</code></pre>
+<p>如果将修改子模块的相关变更推送到父项目的远程，其他人拉取代码时，只用 <code>git pull</code> 的话只会把子模块的相关修改拉取到父项目，具体变更并<strong>不会更新</strong>到子模块中，在父项目里执行：</p>
+<blockquote>
+<p><code>git diff --submodule</code></p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">Submodule xxx a6e2962..70c316e (rewind):
+  &lt; add file<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>注意子模块提交记录中前的 <strong><code>&lt;</code></strong> 符号，表示变更未更新到子模块文件夹里，所以更新子模块变更需要执行：</p>
+<pre><code>git submodule update --init --recursive
+</code></pre>
+<p>或者直接在父项目拉取时同时更新子模块（需要子模块已经 <code>init</code>，否则仍然拉取不到文件）：</p>
+<pre><code>git pull --recurse-submodules
+</code></pre>
+<h4 id="分支切换"><a href="#分支切换" class="headerlink" title="分支切换"></a>分支切换</h4><p>更新完子模块（<code>git submodule update</code>）后，虽然会将文件变更同步到子模块目录下，但是此时子模块并没有处于任何已有分支下，去子模块目录下检查一下分支就会发现：</p>
+<blockquote>
+<p><code>git branch -vv</code></p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">* (HEAD detached at 16d1b6b) 16d1b6b mod file
+  master                     16d1b6b [origin&#x2F;master] mod file<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>当前分支并不是 <code>master</code>，而是一个 <code>detached</code> 状态的编号分支，官方文档称为“游离的 HEAD”，虽然可以提交，但是并没有本地分支跟踪这些更改，意味着下次更新子模块就会<strong>丢失</strong>这些更改；</p>
+<p>所以在子模块下开始开发前，需要先<strong>切换</strong>到某个已有分支或者创建新的分支，比如进入主分支：</p>
+<pre><code>git checkout master
+</code></pre>
+<h4 id="分支合并"><a href="#分支合并" class="headerlink" title="分支合并"></a>分支合并</h4><p>除了默认的分支同步更新操作，也可以执行其他类型的分支更新行为，比如 <code>merge</code>，<code>rebase</code> 等；如将父项目中记录的子模块最新变更（分支是 <code>submodule.xxx.branch</code> 中配置的，默认主分支 <code>master</code>）<code>merge</code> 到子模块的当前分支中，则执行：</p>
+<pre><code>git submodule update --remote --merge
+</code></pre>
+<p><code>rebase</code> 到子模块当前分支则执行：</p>
+<pre><code>git submodule update --remote --rebase
+</code></pre>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p>如果其他人修改了子模块的内容并提交了记录，父项目也提交并推送了远程仓库，但是子模块<strong>没有</strong>推送其对应的远程仓库，<br>那么其他人拉取父项目代码变更时没有问题，但是<strong>更新</strong>子模块时就会遇到下面的问题：</p>
+<pre class="line-numbers language-none"><code class="language-none">fatal: remote error: upload-pack: not our ref 16d1b6b94e3245f3a7fb4f43e5b6f44b14027fbb
+Fetched in submodule path &#39;xxx&#39;, but it did not contain 16d1b6b94e3245f3a7fb4f43e5b6f44b14027fbb.
+Direct fetching of that commit failed.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>即由于其他人没有及时将子模块的提交 <code>push</code> 的子模块的远程仓库，我们本地父项目有了关于子模块最新的变更，但是在子模块的仓库中却找不到，就报错了，让对方在子模块下 <code>push</code> 一下这边再重新更新就行了；</p>
+<p>为了避免制造这一不必要的麻烦，可以把在父项目中推送远程的命令替换为：</p>
+<pre><code>git push --recurse-submodules=check
+</code></pre>
+<p>这样如果子模块（与父项目记录的对应分支）存在未 <code>push</code> 的提交，就会报错，并且子模块有推送失败的，父项目也会推送失败；需要在推送父项目时自动推送未推送的子模块，则执行：</p>
+<pre><code>git push --recurse-submodules=on-demand
+</code></pre>
+<p>觉得每次手输太麻烦，就直接将其写入配置：</p>
+<pre><code>git config push.recurseSubmodules check
+</code></pre>
+<p>如果父项目中子模块的仓库地址（<code>submodule.xxx.url</code>）被其他协作者修改了，那么我们再更新子模块时就可能遇到问题，需要执行：</p>
+<pre><code>git submodule sync --recursive
+</code></pre>
+<p>同步完 <code>url</code>，然后再重新初始化更新：</p>
+<pre><code>git submodule update --int --recursive
+</code></pre>
+<h3 id="删除子模块"><a href="#删除子模块" class="headerlink" title="删除子模块"></a>删除子模块</h3><p>在确认移除子模块前，需要先将其取消注册（<code>unregister</code>），即删除该子模块相关的配置文件（<code>git config</code>），比如要移除子模块 <code>xxx</code>，则执行：</p>
+<pre><code>git submodule deinit xxx
+</code></pre>
+<p>然后子模块的相关配置会被删除（<code>.gitmodules</code> 和 <code>.git/modules/xxx</code> 中的配置会保留），子模块对应的目录也会被清空（子模块目录本身会保留），再运行 <code>git submodule status</code> 查看子模块则会输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">-70c316ecb7c41a5bdf8a37ff93bf866d3b903388 xxx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>前缀 <strong><code>-</code></strong> 表示该子模块已经被取消注册，可理解为暂时移除，想必官方这样做也是给我们提供反悔的余地，因为想要<strong>恢复</strong>刚才删除的子模块，重新执行 <code>git submodule update --init xxx</code> 就能重新初始子模块并拉取文件；</p>
+<p>由于还有一些配置文件仍然被保留，所以想要<strong>彻底删除</strong>的话，需要继续手动删除这里配置文件，即：</p>
+<ul>
+<li>删除子模块对应的目录 <code>xxx</code>；</li>
+<li>删除 <code>.gitmoduls</code> 中子模块 <code>xxx</code> 对应的区块配置；</li>
+<li>删除 <code>.git/modules/</code> 目录下的子模块目录 <code>xxx</code>；</li>
+<li>删除子模块的缓存：<code>git rm --cached xxx</code>；</li>
+</ul>
+<p>然后再执行 <code>git submodule</code> 就没有任何输出了，清除完毕；</p>
+<h3 id="子模块与父项目的联系"><a href="#子模块与父项目的联系" class="headerlink" title="子模块与父项目的联系"></a>子模块与父项目的联系</h3><p>父项目和子模块有着分开的 <code>git</code> 仓库，所以可以分别在父项目和子模块的目录下使用 <code>git</code> 命令，操作的也是<strong>各自</strong>的仓库，比如分别在父项目和子模块中执行 <code>git branch -a</code> 或者 <code>git remote -v</code> 的输出结果是不同的；</p>
+<p>虽然二者有个分开的仓库与提交记录，但是又是关联起来的（这正是 <code>submodule</code> 所做的工作），举个例子，在子模块目录 <code>xxx/</code> 下新增一个文件 <code>test.txt</code>，然后在子模块目录中执行 <code>git satus</code> 会输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+        xxx&#x2F;test.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>此时在父项目下执行 <code>git status</code> 输出的是：</p>
+<pre class="line-numbers language-none"><code class="language-none">Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+  (commit or discard the untracked or modified content in submodules)
+        modified:   xxx (untracked content)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>即提示需要先在子模块下提交修改记录；</p>
+<p>然后子模块下提交记录，执行：</p>
+<pre><code>git add .
+git commit -m &quot;add file&quot;
+</code></pre>
+<p>这时再分别运行 <code>git status</code>，子模块的输出是：</p>
+<pre class="line-numbers language-none"><code class="language-none">Your branch is ahead of &#39;origin&#x2F;master&#39; by 1 commit.
+  (use &quot;git push&quot; to publish your local commits)
+
+nothing to commit, working tree clean<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>而父项目的输出是：</p>
+<pre class="line-numbers language-none"><code class="language-none">Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+        modified:   xxx (new commits)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>提示子模块中有了新的提交（<code>new commits</code>）；</p>
+<p>假如再把子模块下的这个 <code>test.txt</code> 文件删除，则子模块的状态是：</p>
+<pre class="line-numbers language-none"><code class="language-none">Changes not staged for commit:
+  (use &quot;git add&#x2F;rm &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+        deleted:    xxx&#x2F;test.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>但是父项目的状态依然是：</p>
+<pre class="line-numbers language-none"><code class="language-none">Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+        modified:   xxx (new commits)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>子模块撤销刚才的删除操作，将新增文件的记录 <code>git push</code> 到远程（这会推送到子模块<strong>自己</strong>的远程仓库），此时子模块的工作区状态是清空状态，但是父项目的依旧是：</p>
+<pre class="line-numbers language-none"><code class="language-none">Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+        modified:   xxx (new commits)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>所以，父项目与子模块的关联便是，父模块只是单纯的识别子模块的<strong>总体变化</strong>，而不会在意具体是新增、修改还是删除，甚至修改已经提交推送到子模块所属的远程仓库，只是将这些调整统一识别为 <code>modified</code> 状态，然后需要提交并推送到自己（父项目）所属的远程仓库；</p>
+<p>在父项目中使用 <code>git diff</code> 可以查看当前的变更，会输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">diff --git a&#x2F;xxx b&#x2F;xxx
+index 70c316e..a6e2962 160000
+--- a&#x2F;xxx
++++ b&#x2F;xxx
+@@ -1 +1 @@
+-Subproject commit 70c316ecb7c41a5bdf8a37ff93bf866d3b903388
++Subproject commit a6e29629904538e8f70694df607617084d2659ca<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>如果想要查看具体子模块的变动，可以执行：</p>
+<blockquote>
+<p><code>git diff --submodule</code></p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">Submodule xxx 70c316e..a6e2962:
+  &gt; add file<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>输出会列出当前子模块的所有变动的提交日志；也可以直接日志中关联的子模块提交记录，执行：</p>
+<blockquote>
+<p><code>git log -p --submodule</code></p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">commit 909a721e3755affb7620316b44df8fbc1b3488f2 (HEAD -&gt; master)
+Author: ******
+Date:   ******
+
+    mod submodule
+
+Submodule xxx 70c316e..a6e2962:
+  &gt; add file<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>父项目从含有子模块的分支切换到没有子模块的分支时，默认会<strong>保留</strong>子模块对应的目录，所以这使得切换过去时本地会保留关于子模块的修改记录，显然这不太合理，所以从包含子模块的分支切换到 <code>xxx</code> 时，需要这样执行：</p>
+<pre><code>git checkout xxx --recurse-submodules
+</code></pre>
+<p>当父项目存在许多子模块时，有时需要对多个子模块执行相同的操作，这时就可以使用 <strong><code>foreach</code></strong> 功能，比如批量存储：</p>
+<pre><code>git submodule foreach &#39;git stash&#39;
+</code></pre>
+<p>或者在每个子模块中新建切换分支：</p>
+<pre><code>git submodule foreach &#39;git checkout -b new&#39;
+</code></pre>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/git-submodule/" rel="tag"># git submodule</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/17/%E4%B8%BA%E4%BB%80%E4%B9%88git%E5%92%8C%E8%BF%9C%E7%A8%8Borigin%E4%BA%A4%E4%BA%92%E7%9A%84%E6%97%B6%E5%80%99ssh%E6%AF%8F%E6%AC%A1%E9%83%BD%E8%A6%81%E6%B1%82%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81/" rel="prev" title="为什么git和远程origin交互的时候ssh每次都要求输入密码?">
+      <i class="fa fa-chevron-left"></i> 为什么git和远程origin交互的时候ssh每次都要求输入密码?
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="nav-number">2.1.</span> <span class="nav-text">新增子模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="nav-number">2.2.</span> <span class="nav-text">查看子模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%89%E5%8F%96%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="nav-number">2.3.</span> <span class="nav-text">拉取子模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="nav-number">2.4.</span> <span class="nav-text">更新子模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8B%89%E5%8F%96%E6%9B%B4%E6%96%B0"><span class="nav-number">2.4.1.</span> <span class="nav-text">拉取更新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E6%94%AF%E5%88%87%E6%8D%A2"><span class="nav-number">2.4.2.</span> <span class="nav-text">分支切换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E6%94%AF%E5%90%88%E5%B9%B6"><span class="nav-number">2.4.3.</span> <span class="nav-text">分支合并</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">2.4.4.</span> <span class="nav-text">注意事项</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="nav-number">2.5.</span> <span class="nav-text">删除子模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%90%E6%A8%A1%E5%9D%97%E4%B8%8E%E7%88%B6%E9%A1%B9%E7%9B%AE%E7%9A%84%E8%81%94%E7%B3%BB"><span class="nav-number">2.6.</span> <span class="nav-text">子模块与父项目的联系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">2.7.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="梟羊 · Kirito"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">梟羊 · Kirito</p>
+  <div class="site-description" itemprop="description">找到活著的意義，便能生存</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">梟羊 · Kirito</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'YT1CaolpF8uSu0ubMhUSItYS-MdYXbMMI',
+      appKey     : '6wKOsvAvXofOtNpe3F3UAuFW',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : 'https://yt1caolp.api.lncldglobal.com'
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
